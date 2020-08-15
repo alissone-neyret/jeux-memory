@@ -1,0 +1,44 @@
+.plateau {
+    display: flex;
+    justify-content: center;
+}
+
+#plateau_cartes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 700px;
+}
+
+.carte {
+    position: relative;
+    width: 100px;
+    height: 100px;    
+    border: solid 1px grey;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    transition: transform 0.5s;
+    transform-style: preserve-3d; 
+}
+
+.--animation-retournement-carte {
+    transform: rotateY(180deg);
+}
+
+.carte-face-arriere {
+    position: absolute;
+    transform: rotateY(0deg);
+    background-color: lightgreen;
+    width: 100px;
+    height: 100px; 
+    backface-visibility: hidden;
+}
+
+.carte-face-avant {
+    position: absolute;
+    background-image: url('../medias/cards.png');    
+    transform: rotateY(180deg);
+    width: 100px;
+    height: 100px;    
+    backface-visibility: hidden;  
+}

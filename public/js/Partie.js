@@ -18,7 +18,7 @@ const cartes = [
 
 ]
 
-export class Partie {
+export default class Partie {
     constructor() {
         this.nouvellePartie()
     }
