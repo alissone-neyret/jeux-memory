@@ -1,12 +1,16 @@
+// bouton reset, bouton start, modal à la fin du temps si pas gagné, enregistrement des données en bdd, affichage des scores
+
 $(document).ready(function () {
 
-    // On définit notre tableau de fruit
+    /* On définit notre tableau de fruit */
     const listeFruits = [{ reference: 1 }, { reference: 2 }, { reference: 3 }, { reference: 4, }, { reference: 5 }, { reference: 6 }, { reference: 7 }, { reference: 8 }, { reference: 9 }, { reference: 10 }, { reference: 11 }, { reference: 12 }, { reference: 13 }, { eference: 14 }, { reference: 15 }, { reference: 16 }, { eference: 17 }, { reference: 18 }];
     const tableauCartes = [];
     let cartesRetournees = [];
     const pairesTrouvees = [];
+    let aGagne = false;
+    let tempsPasse = 1;
 
-    // On crée un classe "Partie" qui va servir à contenir toutes les actions voulues qui concernent la partie de jeu
+    /* On crée un classe "Partie" qui va servir à contenir toutes les actions voulues qui concernent la partie de jeu */
     class Partie {
         constructor() {
             this.nouvellePartie()
@@ -18,15 +22,13 @@ $(document).ready(function () {
         // On perd une partie
         // Une partie est finie
 
-        // On crée un méthode qui va générer une nouvelle partie
+        /* On crée un méthode qui va générer une nouvelle partie */
         nouvellePartie() {
             let id = 1
             let positionBackground = 0
 
-            // Pour chaque élément de notre tableau de fruit, nous allons créer une nouvelle carte et définir ses caractéristiques grâce à la classe "Carte"
+            /* Pour chaque élément de notre tableau de fruit, nous allons créer une nouvelle carte et définir ses caractéristiques grâce à la classe "Carte" */
             $.each(listeFruits, function (index, fruit) {
-
-
 
                 let nouvelleCarte = new Carte(fruit.nom, id, positionBackground)
                 let nouvelleCarte2 = new Carte(fruit.nom, id, positionBackground)
@@ -40,24 +42,19 @@ $(document).ready(function () {
 
             this.melangeDesCartes(tableauCartes)
 
-
             $.each(tableauCartes, function (index, carte) {
 
-                console.log("carte", carte)
-                console.log("index", index)
                 $('#memory__plateau__cartes').append(`<div id=${index} class="carte"><div class="carte-face-arriere"></div>
                 <div class="carte-face-avant" style="background-position-y: ${carte.positionBackground}px"></div></div>`)
 
             })
 
-
+            /* A chaque fois que l'on clique sur une carte, on a besoin de savoir si elle peut être retournée (recto), si une paire a été trouvée ou si on doit la retourner (verso) */
             $(".carte").click(async (e) => {
                 let carteCliquee = tableauCartes[e.currentTarget.id]
 
-                console.log("carte cliquée", carteCliquee)
-                console.log("carte paires trouvees", pairesTrouvees.indexOf(carteCliquee.id))
-                if (pairesTrouvees.length > 0 && pairesTrouvees.indexOf(carteCliquee.id) !== -1) {                    
-                        return false                     
+                if (pairesTrouvees.length > 0 && pairesTrouvees.indexOf(carteCliquee.id) !== -1) {
+                    return false
                 } else if (cartesRetournees.length === 0) {
                     $(`#${e.currentTarget.id}`).addClass('--animation-retournement-carte')
                     carteCliquee.idElement = parseInt(e.currentTarget.id)
@@ -69,34 +66,7 @@ $(document).ready(function () {
                     carteCliquee.idElement = parseInt(e.currentTarget.id)
                     cartesRetournees.push(carteCliquee)
 
-                    if (cartesRetournees[0].id === cartesRetournees[1].id) {
-                        console.log("une paire de trouvée !")
-                        pairesTrouvees.push(cartesRetournees[0].id)
-                        pairesTrouvees.push(cartesRetournees[1].id)
-                        cartesRetournees = []
-
-                        if (tableauCartes.length === 0) {
-                            console.log("gagné!!")
-                            window.setTimeout(() => {
-                                alert("C'est gagné")
-                            }, 700)
-                        }
-
-                    } else {
-
-                        console.log("cartes retournées tableau", cartesRetournees)
-                        window.setTimeout(() => {
-                            console.log("cartes retournées tableau", cartesRetournees)
-
-                            console.log("je time out")
-                            $(`#${cartesRetournees[0].idElement}`).removeClass('--animation-retournement-carte')
-                            $(`#${cartesRetournees[1].idElement}`).removeClass('--animation-retournement-carte')
-                            cartesRetournees = []
-
-
-                        }, 700)
-
-                    }
+                    this.compareCartesRetournees(cartesRetournees[0], cartesRetournees[1])
 
                 }
                 else if (cartesRetournees.length > 1) {
@@ -104,9 +74,7 @@ $(document).ready(function () {
                 }
 
             })
-
         }
-
 
         /**
          * Permet de modifier les emplacements des cartes de façon aléatoire
@@ -122,18 +90,50 @@ $(document).ready(function () {
             }
         }
 
-        compareCartesRetournees(carte) {
+        /**
+         * Permet de comparer les 2 cartes qui viennent d'être choisies pour vérifier s'il s'agit d'une paire.          
+         * @param {object} premiereCarteRetournee 
+         * @param {object} deuxiemeCarteRetournee 
+         */
+        compareCartesRetournees(premiereCarteRetournee, deuxiemeCarteRetournee) {
 
-            cartesRetournees.push(carte)
-            console.log("carte retournées tableau", cartesRetournees)
-            if (cartesRetournees.length === 2) {
-                console.log("carte retournée 1", cartesRetournees[0].id)
-                console.log("carte retournée 2", cartesRetournees[1].id)
-                let unePaireTrouvee = cartesRetournees[0].id === cartesRetournees[1].id
-                if (unePaireTrouvee) {
-                    console.log("une paire de trouvée !")
-                    pairesTrouvees.push(cartesRetournees[0].id)
-                }
+            /* Grâce à l'id des cartes, on peut vérifier si les 2 cartes choisies sont des paires */
+            if (premiereCarteRetournee.id === deuxiemeCarteRetournee.id) {
+                pairesTrouvees.push(premiereCarteRetournee.id)
+                pairesTrouvees.push(deuxiemeCarteRetournee.id)
+                cartesRetournees = []
+
+                /* A chaque paire trouvée, on vérifie si la partie est terminée */            
+                this.verifieSiPartieGagnee()
+
+                /* Si les 2 cartes choisies ne sont pas une paire, on les retourne */
+            } else {
+
+                console.log("cartes retournées tableau", cartesRetournees)
+                window.setTimeout(() => {
+                    console.log("cartes retournées tableau", cartesRetournees)
+
+                    console.log("je time out")
+                    $(`#${premiereCarteRetournee.idElement}`).removeClass('--animation-retournement-carte')
+                    $(`#${deuxiemeCarteRetournee.idElement}`).removeClass('--animation-retournement-carte')
+                    cartesRetournees = []
+
+
+                }, 700)
+
+            }
+        }
+
+        /**
+         * Permet de vérifier si la partie est terminée et gagnée en comparant le tableau des cartes et le tableau des paires trouvées
+         */
+        verifieSiPartieGagnee() {
+
+            if (pairesTrouvees.length === tableauCartes.length) {
+                aGagne = true;
+                window.setTimeout(() => {
+                    alert("C'est gagné")
+                }, 700)
             }
         }
 
@@ -142,21 +142,28 @@ $(document).ready(function () {
             console.log("progression")
             let elem = document.getElementById("chrono");
             let width = 1;
-            let id = setInterval(frame, 1000);
+            let id = setInterval(frame, 50);
 
-            console.log("elem", elem)
             function frame() {
-                if (width >= 100) {
+
+                let test;
+                let test2;
+
+                if (width >= 100 && !aGagne) {
+                    test = new Date(tempsPasse * 1000).toISOString()
+                    test2 = test.substring(11, 19)
+                    alert('Perdu')
                     clearInterval(id);
-                } else {
+                    tempsPasse = 0;
+                    width = 0;
+                    elem.style.width = width + '%';
+                } else if (!aGagne) {
                     width++;
                     elem.style.width = width + '%';
+                    tempsPasse += 1
                 }
             }
-
         }
-
-
     }
 
 
@@ -165,6 +172,12 @@ $(document).ready(function () {
             this.id = id;
             this.nom = nom;
             this.positionBackground = positionBackground
+        }
+    }
+
+    class Chronometre {
+        constructor(duree) {
+            this.duree = duree
         }
     }
 
