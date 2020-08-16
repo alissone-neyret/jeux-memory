@@ -5,6 +5,7 @@ const path = require('path');
 const router = express.Router();
 const port = 3000;
 
+/* Affichage du fichier HTML sur l'url "/" */
 router.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
@@ -16,31 +17,36 @@ app.use(express.urlencoded({
 }));
 app.use('/', router);
 
+/* Création d'une route permettant de récupérer tous les scores */
 router.get('/scores', (req, res) => {  
 
+  /* On récupère tous les scores qui correspondent à des parties gagnées*/
   connection.query('SELECT * from score where aGagne = 1', (err, results) => {
+
     if (err) {
-      // Si une erreur est survenue, alors on informe l'utilisateur de l'erreur
-      console.log(err);
+      /* Si une erreur est survenue lors de la récupération, alors on informe l'utilisateur de l'erreur */
       res.status(500).send("Erreur lors de la sauvegarde d'un score");
-    } else {
+    } 
+    else {
+      /* Si tout s'est bien passé, on envoie les données récupérées */
       let tableauScores = JSON.parse(JSON.stringify(results));
-      // Si tout s'est bien passé, on envoie un statut "ok".
       res.json(tableauScores);
     }
   });
 });
 
+/* Création d'une route permettant d'enregistrer un score */
 router.post('/sauvegarde/score', (req, res) => {
   const donnees = req.body
 
+  /* On enregistre un score dans la table "Score" */
   connection.query('INSERT INTO score SET ?', donnees, (err, results) => {
+
     if (err) {
-      // Si une erreur est survenue, alors on informe l'utilisateur de l'erreur
-      console.log(err);
+      /* Si une erreur est survenue, alors on informe l'utilisateur de l'erreur */
       res.status(500).send("Erreur lors de la sauvegarde d'un score");
-    } else {
-      console.log("bien envoyé!")
+    } 
+    else {
       // Si tout s'est bien passé, on envoie un statut "ok".
       res.sendStatus(200);
     }
@@ -48,5 +54,5 @@ router.post('/sauvegarde/score', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`app listening at http://localhost:${port}`)
+  console.log(`App listening at http://localhost:${port}`)
 })
