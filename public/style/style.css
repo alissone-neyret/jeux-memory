@@ -1,9 +1,9 @@
-.memory__plateau {
+.memory__jeux__plateau {
     display: flex;
     justify-content: center;
 }
 
-#memory__plateau__cartes {
+#memory__jeux__plateau__cartes {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -47,12 +47,12 @@
     backface-visibility: hidden;  
 }
 
-.memory__chronometre {
+.memory__jeux__temps__chronometre {
     background-color: lightgray;
     width: 700px;
 }
 
-.memory__chronometre__barre-progression {
+.memory__jeux__temps__chronometre__barre-progression {
     height: 24px;
     width: 0;
     background-color: green;

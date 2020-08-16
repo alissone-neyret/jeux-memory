@@ -12,19 +12,35 @@
         <h1>Jeux de mémoire</h1>
     </header>
 
-    <section class="memory__plateau">
-        <div id="memory__plateau__cartes">
+    <section class="memory__jeux">
+        <div class="memory__jeux__plateau">
+            <div id="memory__jeux__plateau__cartes">
+            </div>
+        </div>
+
+        <div class="memory__jeux__temps">
+            <p class="memory__jeux__temps-affichage"></p>
+            <div class="memory__jeux__temps__chronometre">
+                <div id="chrono" class="memory__jeux__temps__chronometre__barre-progression"></div>
+            </div>
         </div>
     </section>
 
-    <section>
-        <div class="memory__chronometre">
-            <div id="chrono" class="memory__chronometre__barre-progression"></div>
+    <section class="memory__accueil">
+        <div class="memory__accueil__classement">
+            <h2>Les scores sur le podium</h2>
+            <div class="memory__accueil__classement__scores"></div>
         </div>
+        <button class="memory__accueil-bouton">Jouer</button>
+    </section>
+
+    <section class="memory__fin-partie">
+        <h2 class="memory__fin-partie-titre"></h2>
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/js/index.js" type="module"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/index.js" type="module"></script>
 </body>
 
 </html>

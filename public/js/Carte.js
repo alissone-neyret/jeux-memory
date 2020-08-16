@@ -1,6 +1,9 @@
+/**
+ * Permet de générer une carte qui contient un id et la position de son image
+ */
 export default class Carte {
-    constructor(nom, id) {
-        this.id = id;
-        this.nom = nom;
+    constructor(id, positionBackground) {
+        this.id = id;        
+        this.positionBackground = positionBackground
     }
 }
