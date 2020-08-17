@@ -74,6 +74,6 @@ Une dernière à lancer et c'est à vous de jouer :
 node app.js
 ```
 
-Vous pouvez maintenant ouvrir une page de votre navigateur internet préféré et vous rendre à l'url : [localHost:3000](localhost:3000).
+Vous pouvez maintenant ouvrir une page de votre navigateur internet préféré et vous rendre à l'url : [localHost:3000](http://localhost:3000).
 
 Enjoy ! :tada:
