@@ -23,7 +23,11 @@
     "browserify": "^16.5.2",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
+    "mysqldump": "^3.2.0",
     "node-sass": "^4.14.1",
     "sass": "^1.26.10"
+  },
+  "devDependencies": {
+    "mysql-import": "^4.0.24"
   }
 }
