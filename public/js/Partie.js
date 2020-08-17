@@ -3,7 +3,7 @@ import { afficheHorlogeDepuisSecondes, recupereScores } from './fonctions.js';
 
 /* On définit les variables dont on aura besoin dans notre partie */
 const listeFruits = [
-    { reference: 1 }, { reference: 2 }, { reference: 3 }, { reference: 4, }, { reference: 5 }, { reference: 6 }, { reference: 7 }, { reference: 8 }, /*{ reference: 9 }, { reference: 10 }, { reference: 11 }, { reference: 12 }, { reference: 13 }, { eference: 14 }, { reference: 15 }, { reference: 16 }, { eference: 17 }, { reference: 18 }*/
+    { reference: 1 }, { reference: 2 }, { reference: 3 }, { reference: 4, }, { reference: 5 }, { reference: 6 }, { reference: 7 }, { reference: 8 }, { reference: 9 }, { reference: 10 }, { reference: 11 }, { reference: 12 }, { reference: 13 }, { eference: 14 }, { reference: 15 }, { reference: 16 }, { eference: 17 }, { reference: 18 }
 ];
 let tableauCartes = [];
 let cartesRetournees = [];
