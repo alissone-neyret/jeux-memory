@@ -1,59 +1,113 @@
-.memory__jeux__plateau {
+@charset "UTF-8";
+/* On définit des variables pour les éléments qui seront utilisés plusieurs fois */
+body {
+  background: radial-gradient(#712378, #2f0f2f);
+  height: 92vh;
+  font-family: Arial, sans-serif;
+  /* -------------------- Accueil -------------------- */
+  /* -------------------- Espace pour le jeux -------------------- */
+  /* -------------------- Emplacement fin de partie -------------------- */ }
+  body header {
+    text-align: center; }
+    body header .memory-titre {
+      font-size: 70px;
+      color: #84f2bd;
+      font-weight: normal;
+      margin: 0.3em; }
+  body .memory__accueil {
     display: flex;
-    justify-content: center;
-}
-
-#memory__jeux__plateau__cartes {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 700px;
-}
-
-.carte {
-    position: relative;
-    width: 100px;
-    height: 100px;    
-    border: solid 1px grey;
-    margin-right: 0.5em;
-    margin-bottom: 0.5em;
-    transition: transform 0.5s;
-    transform-style: preserve-3d; 
-}
-
-.--animation-retournement-carte {
-    transform: rotateY(180deg);
-}
-
-.--animation-retournement-carte-final {
-    transform: rotateY(180deg);
-}
-
-.carte-face-arriere {
-    position: absolute;
-    transform: rotateY(0deg);
-    background-color: lightgreen;
-    width: 100px;
-    height: 100px; 
-    backface-visibility: hidden;
-}
-
-.carte-face-avant {
-    position: absolute;
-    background-image: url('../medias/cards.png');    
-    transform: rotateY(180deg);
-    width: 100px;
-    height: 100px;    
-    backface-visibility: hidden;  
-}
-
-.memory__jeux__temps__chronometre {
-    background-color: lightgray;
-    width: 700px;
-}
-
-.memory__jeux__temps__chronometre__barre-progression {
-    height: 24px;
-    width: 0;
-    background-color: green;
-}
+    flex-direction: column;
+    align-items: center; }
+    body .memory__accueil .memory__accueil-bouton {
+      width: 200px;
+      background-color: #84f2bd;
+      border: solid 4px #fdfbec;
+      font-size: 20px;
+      border-radius: 10px;
+      padding: 0.1em;
+      color: #424242;
+      margin-top: 3em;
+      box-shadow: 0 3px 5px 3px rgba(0, 0, 0, 0.3); }
+    body .memory__accueil .memory__accueil-bouton:hover {
+      cursor: pointer; }
+    body .memory__accueil .memory__accueil__classement {
+      background-color: #fdfbec;
+      width: 270px;
+      text-align: center;
+      padding: 0.8em 1em;
+      border-radius: 10px;
+      border: solid 4px #84f2bd; }
+      body .memory__accueil .memory__accueil__classement h2 {
+        font-size: 30px;
+        margin: 0;
+        font-weight: normal;
+        margin-bottom: 1em; }
+      body .memory__accueil .memory__accueil__classement .memory__accueil__classement__scores {
+        font-size: 20px;
+        margin-bottom: 0.8em; }
+  body .memory__jeux {
+    /* -------------------- Chronomètre -------------------- */ }
+    body .memory__jeux .memory__jeux__plateau {
+      display: flex;
+      justify-content: center;
+      margin-top: 2em; }
+      body .memory__jeux .memory__jeux__plateau #memory__jeux__plateau__cartes {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 700px; }
+        body .memory__jeux .memory__jeux__plateau #memory__jeux__plateau__cartes .carte {
+          position: relative;
+          width: 100px;
+          height: 100px;
+          margin-right: 0.5em;
+          margin-bottom: 0.5em;
+          transition: transform 0.5s;
+          transform-style: preserve-3d;
+          box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.3); }
+          body .memory__jeux .memory__jeux__plateau #memory__jeux__plateau__cartes .carte .carte-face-arriere {
+            position: absolute;
+            transform: rotateY(0deg);
+            background-image: url("../medias/verso_carte.png");
+            width: 100px;
+            height: 100px;
+            backface-visibility: hidden; }
+          body .memory__jeux .memory__jeux__plateau #memory__jeux__plateau__cartes .carte .carte-face-arriere:hover {
+            background-image: url("../medias/verso_carte_hover.png");
+            cursor: pointer; }
+          body .memory__jeux .memory__jeux__plateau #memory__jeux__plateau__cartes .carte .carte-face-avant {
+            position: absolute;
+            background-image: url("../medias/cards.png");
+            transform: rotateY(180deg);
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            backface-visibility: hidden; }
+        body .memory__jeux .memory__jeux__plateau #memory__jeux__plateau__cartes .--animation-retournement-carte {
+          transform: rotateY(180deg); }
+        body .memory__jeux .memory__jeux__plateau #memory__jeux__plateau__cartes .--animation-retournement-carte-final {
+          transform: rotateY(180deg); }
+    body .memory__jeux .memory__jeux__temps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1em; }
+      body .memory__jeux .memory__jeux__temps .memory__jeux__temps__chronometre {
+        background-color: #fdfbec;
+        width: 700px;
+        border-radius: 10px; }
+      body .memory__jeux .memory__jeux__temps .memory__jeux__temps__chronometre__barre-progression {
+        height: 20px;
+        width: 100%;
+        background-color: #00ff00;
+        box-shadow: inset 0em -0.7em 1em rgba(0, 0, 0, 0.6);
+        border-radius: 50px; }
+      body .memory__jeux .memory__jeux__temps .memory__jeux__temps-affichage {
+        font-size: 20px;
+        color: #fdfbec; }
+  body .memory__fin-partie {
+    text-align: center;
+    margin-top: 2em; }
+    body .memory__fin-partie .memory__fin-partie-titre {
+      color: #fdfbec;
+      font-weight: normal; }

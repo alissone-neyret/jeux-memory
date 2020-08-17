@@ -3,7 +3,7 @@
  * @param {*number} duree La durée en secondes
  */
 const afficheHorlogeDepuisSecondes = (duree) => {
-    return new Date(duree * 1000).toISOString().substring(11, 19)
+    return new Date(duree * 1000).toISOString().substring(14, 19)
 }
 
 /**
@@ -18,7 +18,7 @@ const recupereScores = () => {
             tableauScores = tableauScores.sort(function (a, b) {
                 return a.duree - b.duree
             })
-            tableauScores.splice(3, tableauScores.length - 3)
+            tableauScores.splice(10, tableauScores.length - 10)
 
             $.each(tableauScores, function (index, score) {
                 let tempsEcoule = afficheHorlogeDepuisSecondes(score.duree)

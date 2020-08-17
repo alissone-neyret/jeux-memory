@@ -3,13 +3,13 @@ import { afficheHorlogeDepuisSecondes, recupereScores } from './fonctions.js';
 
 /* On définit les variables dont on aura besoin dans notre partie */
 const listeFruits = [
-    { reference: 1 }, { reference: 2 }, { reference: 3 }, { reference: 4, }, { reference: 5 }, { reference: 6 }, { reference: 7 }, { reference: 8 }, { reference: 9 }, { reference: 10 }, { reference: 11 }, { reference: 12 }, { reference: 13 }, { eference: 14 }, { reference: 15 }, { reference: 16 }, { eference: 17 }, { reference: 18 }
+    { reference: 1 }, { reference: 2 }, { reference: 3 }, { reference: 4, }, { reference: 5 }, { reference: 6 }, { reference: 7 }, { reference: 8 }, /*{ reference: 9 }, { reference: 10 }, { reference: 11 }, { reference: 12 }, { reference: 13 }, { eference: 14 }, { reference: 15 }, { reference: 16 }, { eference: 17 }, { reference: 18 }*/
 ];
 let tableauCartes = [];
 let cartesRetournees = [];
 let pairesTrouvees = [];
 let aGagne;
-let tempsPasse = 1;
+let tempsPasse = 0;
 
 
 /* On crée un classe "Partie" qui va servir à contenir toutes les actions voulues qui concernent la partie de jeu */
@@ -25,7 +25,7 @@ export default class Partie {
         aGagne = false
 
         let id = 1
-        let positionBackground = 0
+        let positionBackground = 0           
 
         /* Pour chaque élément de notre tableau de fruit, nous allons créer une nouvelle carte et définir ses caractéristiques grâce à la classe "Carte" */
         $.each(listeFruits, function (index, fruit) {
@@ -141,7 +141,7 @@ export default class Partie {
 
         if (pairesTrouvees.length === tableauCartes.length) {
             console.log("on passe a gagné à true")
-            aGagne = true;            
+            aGagne = true;
         }
     }
 
@@ -151,20 +151,22 @@ export default class Partie {
      */
     barreDeProgression() {
         let element = document.getElementById("chrono");
-        let width = 1;
+        let width = 100;
         let interval = setInterval(actionsAEffectuees, 1000);
-        let self = this
+        let self = this      
+        let tempsEcoule = afficheHorlogeDepuisSecondes(tempsPasse)
+        $('.memory__jeux__temps-affichage').text(tempsEcoule)  
 
         function actionsAEffectuees() {
 
             if (aGagne === true) {
                 self.finDePartie(element, width, interval)
 
-            } else if (width >= 100 && !aGagne) {
+            } else if (width === 0 && !aGagne) {
                 self.finDePartie(element, width, interval)
 
             } else if (aGagne !== true) {
-                width +=0.5;
+                width -= 0.5;
                 element.style.width = width + '%';
                 tempsPasse += 1
                 let tempsEcoule = afficheHorlogeDepuisSecondes(tempsPasse)
@@ -204,7 +206,7 @@ export default class Partie {
         tableauCartes = [];
         cartesRetournees = [];
         pairesTrouvees = [];
-        tempsPasse = 1;
+        tempsPasse = 1;        
     }
 
 

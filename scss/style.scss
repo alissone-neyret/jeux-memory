@@ -1,0 +1,172 @@
+/* On définit des variables pour les éléments qui seront utilisés plusieurs fois */ 
+$bleu: #84f2bd;
+$gris: #424242;
+$creme: #fdfbec;
+$vert: #00ff00; 
+$police-normal: 20px;
+$titre-moyen: 30px;
+$titre-grand: 70px;
+
+body {
+    background: radial-gradient(#712378, #2f0f2f);
+    height: 92vh;  
+    font-family: Arial, sans-serif;
+
+    header {
+        text-align: center;
+
+        .memory-titre {
+            font-size: $titre-grand;
+            color:$bleu;
+            font-weight: normal;
+            margin: 0.3em;
+        }
+    }
+
+    /* -------------------- Accueil -------------------- */
+    .memory__accueil {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .memory__accueil-bouton {
+            width: 200px;
+            background-color: $bleu;
+            border: solid 4px $creme;
+            font-size: $police-normal;
+            border-radius: 10px;
+            padding: 0.1em;
+            color: $gris;
+            margin-top: 3em;
+            box-shadow: 0 3px 5px 3px rgba(0,0,0, 0.3);
+        }
+
+        .memory__accueil-bouton:hover {
+            cursor: pointer;
+        }
+
+        .memory__accueil__classement {
+            background-color: $creme;
+            width: 270px;
+            text-align: center;
+            padding: 0.8em 1em;
+            border-radius: 10px;
+            border: solid 4px $bleu;
+    
+            h2 {
+                font-size: $titre-moyen;
+                margin: 0;
+                font-weight: normal;
+                margin-bottom: 1em;
+            }
+    
+            .memory__accueil__classement__scores {
+                font-size: $police-normal;
+                margin-bottom: 0.8em;
+            }
+        }
+    }
+
+    /* -------------------- Espace pour le jeux -------------------- */
+    .memory__jeux {
+
+        
+        .memory__jeux__plateau {
+            display: flex;
+            justify-content: center;
+            margin-top: 2em;
+            
+            #memory__jeux__plateau__cartes {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 700px;
+                
+                .carte {
+                    position: relative;
+                    width: 100px;
+                    height: 100px;    
+                    margin-right: 0.5em;
+                    margin-bottom: 0.5em;
+                    transition: transform 0.5s;
+                    transform-style: preserve-3d; 
+                    box-shadow: 0 5px 15px 5px rgba(0,0,0, 0.3);
+                    
+                    .carte-face-arriere {
+                        position: absolute;
+                        transform: rotateY(0deg);
+                        background-image: url('../medias/verso_carte.png');
+                        width: 100px;
+                        height: 100px; 
+                        backface-visibility: hidden;
+                    }
+                    
+                    .carte-face-arriere:hover {                   
+                        background-image: url('../medias/verso_carte_hover.png');
+                        cursor: pointer;                    
+                    }
+                    
+                    .carte-face-avant {
+                        position: absolute;
+                        background-image: url('../medias/cards.png');    
+                        transform: rotateY(180deg);
+                        width: 100px;
+                        height: 100px;    
+                        border-radius: 10px;
+                        backface-visibility: hidden;  
+                    }
+                }
+                
+                .--animation-retournement-carte {
+                    transform: rotateY(180deg);
+                }
+                
+                .--animation-retournement-carte-final {
+                    transform: rotateY(180deg);
+                }
+                
+            }
+        }
+
+        /* -------------------- Chronomètre -------------------- */
+        .memory__jeux__temps {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1em;
+
+            .memory__jeux__temps__chronometre {
+                background-color: $creme;
+                width: 700px;
+                border-radius: 10px;
+            }
+            
+            .memory__jeux__temps__chronometre__barre-progression {
+                height: 20px;
+                width: 100%;
+                background-color: $vert;
+                box-shadow: inset 0em -0.7em 1em rgba(0,0,0,0.6);
+                border-radius: 50px;
+            }
+
+            .memory__jeux__temps-affichage {
+                font-size: $police-normal;
+                color: $creme;
+            }
+        }
+
+    }
+
+    /* -------------------- Emplacement fin de partie -------------------- */
+    .memory__fin-partie {
+        text-align: center;
+        margin-top: 2em;
+
+        .memory__fin-partie-titre {
+            color: $creme;
+            font-weight: normal;            
+        }
+    }
+    
+}
