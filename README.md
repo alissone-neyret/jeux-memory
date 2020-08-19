@@ -30,8 +30,8 @@ Un préprocesseur CSS a été utilisé pour générer dynamiquement un fichier C
 
 Pré-requis :
 
-* NodeJS
-* MySQL
+* [NodeJS](http://localhost:3000)
+* [MySql](https://nodejs.org/en/)
 
 #### Etape 1 : Cloner le projet :two_women_holding_hands:
 
