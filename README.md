@@ -59,7 +59,7 @@ Pour cela, rendez-vous dans le fichier config.js et modifiez les identifiants de
 
 #### Etape 3 : NPM :cd:
 
-Il est maintenant temps d'installer les paquets nécessaires à la bonne exécution du jeux via la commande suivante : 
+Il est maintenant temps d'installer les paquets nécessaires à la bonne exécution du jeux. Placez-vous dans le dossier du jeux puis exécutez la commande suivante : 
 
 ```
 npm install
