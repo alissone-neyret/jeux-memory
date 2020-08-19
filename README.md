@@ -67,13 +67,12 @@ npm install
 
 #### Etape 4 : Lancement du jeux :rocket:
 
-Félicitations vous avez réussi toutes les étapes précédentes ! Il est maintenant l'heure de s'amuser ! 
-Une dernière commande à lancer et c'est à vous de jouer : 
+Félicitations vous avez réussi l'installation ! Une dernière commande à lancer et c'est à vous de jouer : 
 
 ```
 node app.js
 ```
 
-Vous pouvez maintenant ouvrir une page de votre navigateur internet préféré et vous rendre à l'url : [localHost:3000](http://localhost:3000).
+Il est maintenant l'heure de s'amuser ! Vous pouvez maintenant ouvrir une page de votre navigateur internet préféré et vous rendre à l'url : [localHost:3000](http://localhost:3000).
 
 Enjoy ! :tada:
