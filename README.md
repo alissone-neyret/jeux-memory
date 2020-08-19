@@ -49,7 +49,7 @@ Afin de pouvoir stocker les scores, il faut créer une base de données. Vous po
 > :warning: Il est impératif que votre base de données s'appelle "memory"
 
 ```
-CREATE DATABASE memory
+CREATE DATABASE memory;
 ```
 
 #### Etape 2 : Configuration :gear:
