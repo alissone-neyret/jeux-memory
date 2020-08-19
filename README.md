@@ -11,11 +11,11 @@
 
 Le jeux Memory est un jeux de mémoire où vous devez retrouver toutes les paires de cartes dans un temps imparti. 
 
-A l'arrivée, il y a un plateau de 36 cartes face cachées. Vous devez retournez les cartes 2 par 2. Si les cartes retournées sont identiques alors vous gagnez la paire, sinon les cartes sont automatiquement retournées et cachées. A nouveau vous devez retourner 2 nouvelles cartes.
+A l'arrivée, il y a un plateau de 36 cartes face cachée. Vous devez retourner les cartes 2 par 2. Si les cartes retournées sont identiques alors vous gagnez la paire, sinon les cartes sont automatiquement retournées et cachées. A nouveau vous devez retourner 2 nouvelles cartes.
 
 La partie est terminée lorsque toutes les paires ont été trouvées avant la fin du temps ou lorsque le temps est écoulé.
 
-Chaque score réalisé est sauvegardé en base de données et les 10 meilleures apparaissent à l'arrivée.
+Chaque score réalisé est sauvegardé en base de données et les 10 meilleurs apparaissent à l'arrivée.
 
 ## :wrench: Technologies utilisées
 
@@ -54,8 +54,8 @@ CREATE DATABASE memory
 
 #### Etape 2 : Configuration :gear:
 
-Votre base de données maintenant créée, il faut modifier les informations de connection à celle-ci. 
-Pour cela, rendez-vous dans le fichier config.js et modifiez les identifiants de connexion afin de renseigner ceux que vous utiliser pour vous connecter à MySql.
+Votre base de données maintenant créée, il faut modifier les informations de connexion à celle-ci. 
+Pour cela, rendez-vous dans le fichier config.js et modifiez les identifiants de connexion afin de renseigner ceux que vous utilisez pour vous connecter à MySql.
 
 #### Etape 3 : NPM :cd:
 
@@ -68,7 +68,7 @@ npm install
 #### Etape 4 : Lancement du jeux :rocket:
 
 Félicitations vous avez réussi toutes les étapes précédentes ! Il est maintenant l'heure de s'amuser ! 
-Une dernière à lancer et c'est à vous de jouer : 
+Une dernière commande à lancer et c'est à vous de jouer : 
 
 ```
 node app.js
