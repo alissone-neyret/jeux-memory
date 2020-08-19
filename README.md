@@ -38,8 +38,8 @@ Pré-requis :
 Depuis un terminal, placez-vous dans le dossier où vous souhaitez enregistrer le projet puis clonez-le :
 
 ```
-user@user: [~$] cd "dossierOuStockerLeProjet"
-user@user: [~/dossierOuStockerLeProjet] $ git clone "https://github.com/..."
+cd "dossierOuStockerLeProjet"
+git clone "https://github.com/..."
 ```
 
 #### Etape 2 : Création de la base de données :scroll:
