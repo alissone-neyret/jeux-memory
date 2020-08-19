@@ -44,7 +44,7 @@ user@user: [~/dossierOuStockerLeProjet] $ git clone "https://github.com/..."
 
 #### Etape 2 : Création de la base de données :scroll:
 
-Afin de pouvoir stocker les scores, il faut créer une base de données. Il existe des interfaces graphiques permettant de manipuler nos base de données (comme [beekeeper studio](https://www.beekeeperstudio.io/)) ou vous pouvez créer une base de données depuis MySQL avec cette commande : 
+Afin de pouvoir stocker les scores, il faut créer une base de données. Vous pouvez créer une base de données depuis MySQL avec cette commande : 
 
 > :warning: Il est impératif que votre base de données s'appelle "memory"
 
